@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem;
+  border-bottom: 1px solid var(--clr-neutral-600)
+}
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.title {
+  font-size: var(--fz-700);
+  text-transform: uppercase;
+  font-weight: var(--fw-eb);
+}
+
+.subtitle {
+  color: var(--clr-neutral-600)
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  column-gap: var(--fz-200);
+  background-color:var(--clr-primary-200);
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+  padding: .5rem 1rem;
+  border-radius: 1.875rem;
+  border: none;
+}
+
+.divider {
+  width: 1px;
+  height: 2rem;
+  background-color: var(--clr-neutral-300);
+}
+
+.count {
+  display: inline-flex;
+  column-gap: .25rem;
+}

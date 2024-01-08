@@ -2,6 +2,7 @@
   --clr-primary-100:#FFDF8C;
   --clr-primary-200:#FE5F1E;
   --clr-neutral-100:#FFF;
+  --clr-neutral-150: #F6F6F6;
   --clr-neutral-200:#F9F9F9;
   --clr-neutral-300: rgba(255, 255, 255, 0.25);
   --clr-neutral-600:#7B7B7B;
@@ -47,6 +48,8 @@ figure, blockquote, dl, dd {
 ul,
 ol {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Set core body defaults */

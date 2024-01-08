@@ -1,0 +1,43 @@
+.sort {
+  display: flex;
+  align-items: center;
+  column-gap: .5rem;
+  position: relative;
+  font-size: var(--fz-300);
+  font-weight: var(--fw-bold);
+}
+
+.picked {
+  color: var(--clr-primary-200);
+  border-block-end: 1px dotted var(--clr-primary-200);
+  cursor: pointer;
+}
+
+.list {
+  display: none;
+  position: absolute;
+  bottom: -8rem;
+  right: 0;
+  background-color: var(--clr-neutral-100);
+  border-radius: .5rem;
+  box-shadow: 0px 0px 16px 0px rgba(174, 174, 174, 0.2);
+  width: 8.5rem;
+  padding-block: .5rem;
+}
+
+.item {
+  cursor: pointer;
+  font-weight: var(--fw-norm);
+  transition: .3s ease-in-out;
+  padding: .5rem 1rem;
+}
+
+.item:hover {
+  background-color: var(--clr-neutral-150);
+  color: var(--clr-primary-200);
+  font-weight: var(--fw-bold);
+}
+
+.active {
+  display: block;
+}

@@ -1,0 +1,11 @@
+.title {
+  font-size: var(--fz-800);
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 17.5rem);
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}

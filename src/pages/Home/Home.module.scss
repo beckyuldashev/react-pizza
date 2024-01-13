@@ -1,0 +1,7 @@
+.main {
+  padding: 2.5rem;
+
+  & > * + * {
+    margin-top: 2rem;
+  }
+}

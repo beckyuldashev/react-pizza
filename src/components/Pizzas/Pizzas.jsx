@@ -1,6 +1,6 @@
-import PizzaCard from "../PizzaCard/PizzaCard";
+import PizzaCard from '../PizzaCard/PizzaCard';
 
-import cl from "./Pizzas.module.css";
+import cl from './Pizzas.module.scss';
 
 const Pizzas = () => {
   return (

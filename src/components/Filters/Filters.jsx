@@ -1,7 +1,7 @@
-import Categories from "../Categories/Categories";
-import Sort from "../Sort/Sort";
+import Categories from '../Categories/Categories';
+import Sort from '../Sort/Sort';
 
-import cl from "./Filters.module.css";
+import cl from './Filters.module.scss';
 
 const Filters = () => {
   return (

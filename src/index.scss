@@ -1,15 +1,15 @@
 :root {
-  --clr-primary-100:#FFDF8C;
-  --clr-primary-200:#FE5F1E;
-  --clr-neutral-100:#FFF;
-  --clr-neutral-150: #F6F6F6;
-  --clr-neutral-200:#F9F9F9;
+  --clr-primary-100: #ffdf8c;
+  --clr-primary-200: #fe5f1e;
+  --clr-neutral-100: #fff;
+  --clr-neutral-150: #f6f6f6;
+  --clr-neutral-200: #f9f9f9;
   --clr-neutral-300: rgba(255, 255, 255, 0.25);
-  --clr-neutral-600:#7B7B7B;
-  --clr-neutral-700:#2C2C2C;
-  --clr-neutral-800:#000;
+  --clr-neutral-600: #7b7b7b;
+  --clr-neutral-700: #2c2c2c;
+  --clr-neutral-800: #000;
 
-  --font-primary: 'Raleway', sans-serif;
+  --font-primary: 'Noto Sans', sans-serif;
 
   --fz-200: 0.5rem;
   --fz-300: 0.875rem;
@@ -21,7 +21,7 @@
 
   --fw-norm: 400;
   --fw-bold: 700;
-  --fw-eb: 800
+  --fw-eb: 800;
 }
 
 /* Box sizing rules */
@@ -39,8 +39,16 @@ html {
 }
 
 /* Remove default margin in favour of better control in authored CSS */
-body, h1, h2, h3, h4, p,
-figure, blockquote, dl, dd {
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
   margin: 0;
 }
 
@@ -59,14 +67,21 @@ body {
 }
 
 /* Set shorter line heights on headings and interactive elements */
-h1, h2, h3, h4,
-button, input, label {
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
   line-height: 1.1;
 }
 
 /* Balance text wrapping on headings */
-h1, h2,
-h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   text-wrap: balance;
 }
 
@@ -84,8 +99,10 @@ picture {
 }
 
 /* Inherit fonts for inputs and buttons */
-input, button,
-textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -99,7 +116,6 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-
 body {
   padding-block: 2rem;
   font-family: var(--font-primary);
@@ -111,6 +127,6 @@ body {
 .app {
   width: min(90%, 83.75rem);
   margin-inline: auto;
-  background-color:var(--clr-neutral-100);
-  border-radius: .625rem;
+  background-color: var(--clr-neutral-100);
+  border-radius: 0.625rem;
 }

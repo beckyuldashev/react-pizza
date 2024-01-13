@@ -1,6 +1,6 @@
-import shopIcon from "../../assets/icons/shop-icon.svg";
+import shopIcon from '../../assets/icons/shop-icon.svg';
 
-import cl from "./Header.module.css";
+import cl from './Header.module.scss';
 
 const Header = () => {
   return (

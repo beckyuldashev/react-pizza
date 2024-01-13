@@ -1,21 +1,21 @@
 .categories {
   display: flex;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
 .btn {
   border-radius: 1.875rem;
   font-weight: var(--fw-bold);
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: var(--clr-neutral-200);
   border: none;
   cursor: pointer;
-  transition: .2s ease-in-out;
-}
+  transition: 0.2s ease-in-out;
 
-.btn:hover{
-  background-color: var(--clr-neutral-700);
-  color: var(--clr-neutral-100);
+  &:hover {
+    background-color: var(--clr-neutral-700);
+    color: var(--clr-neutral-100);
+  }
 }
 
 .active {

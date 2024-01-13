@@ -1,26 +1,22 @@
-import cl from "./Categories.module.scss";
+import { useState } from 'react';
+
+import cl from './Categories.module.scss';
 
 const Categories = () => {
+  const [selectIndex, setSelectIndex] = useState(0);
+  const categoryNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
+
   return (
     <ul className={cl.categories}>
-      <li className={cl.item}>
-        <button className={cl.btn + " " + cl.active}>Все</button>
-      </li>
-      <li className={cl.item}>
-        <button className={cl.btn}>Мясные</button>
-      </li>
-      <li className={cl.item}>
-        <button className={cl.btn}>Вегетарианская</button>
-      </li>
-      <li className={cl.item}>
-        <button className={cl.btn}>Гриль</button>
-      </li>
-      <li className={cl.item}>
-        <button className={cl.btn}>Острые</button>
-      </li>
-      <li className={cl.item}>
-        <button className={cl.btn}>Закрытые</button>
-      </li>
+      {categoryNames.map((category, index) => (
+        <li className={cl.item} key={category}>
+          <button
+            className={selectIndex === index ? cl.btn + ' ' + cl.active : cl.btn}
+            onClick={() => setSelectIndex(index)}>
+            {category}
+          </button>
+        </li>
+      ))}
     </ul>
   );
 };

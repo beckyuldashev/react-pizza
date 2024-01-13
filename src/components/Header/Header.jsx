@@ -8,7 +8,7 @@ const Header = () => {
       <div className={cl.logo}>
         <img src={`${process.env.PUBLIC_URL}/logo.png`} alt="pizza logo" />
         <div>
-          <h1 className={cl.title}>React pizza</h1>
+          <h1 className={cl.title}>BB pizza</h1>
           <span className={cl.subtitle}>самая вкусная пицца во вселенной</span>
         </div>
       </div>

@@ -1,6 +1,17 @@
+import { useState } from 'react';
+
 import cl from './Sort.module.scss';
 
 const Sort = () => {
+  const [isOpened, setIsOpened] = useState(false);
+  const [selectIndex, setSelectIndex] = useState(0);
+  const sortNames = ['по популярности', 'по цене', 'по алфавиту'];
+
+  const onSortSelect = (sortIndex) => {
+    setSelectIndex(sortIndex);
+    setIsOpened(false);
+  };
+
   return (
     <div className={cl.sort}>
       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
@@ -10,11 +21,18 @@ const Sort = () => {
         />
       </svg>
       <span>Сортировка по:</span>
-      <span className={cl.picked}>популярности</span>
-      <ul className={`${cl.list} ${cl.active}`}>
-        <li className={cl.item + ' ' + cl.active}>популярности</li>
-        <li className={cl.item}>по цене</li>
-        <li className={cl.item}>по алфавиту</li>
+      <span className={cl.picked} onClick={() => setIsOpened((prev) => !prev)}>
+        {sortNames[selectIndex]}
+      </span>
+      <ul className={isOpened ? `${cl.list} ${cl.active}` : cl.list}>
+        {sortNames.map((sort, index) => (
+          <li
+            key={index}
+            className={selectIndex === index ? cl.item + ' ' + cl.active : cl.item}
+            onClick={() => onSortSelect(index)}>
+            {sort}
+          </li>
+        ))}
       </ul>
     </div>
   );

@@ -3,9 +3,12 @@
 }
 
 .list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 17.5rem);
-  gap: 2rem;
   margin-top: 2rem;
+  display: grid;
   justify-content: center;
+  gap: 2rem;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, 17.5rem);
+  }
 }

@@ -1,4 +1,13 @@
 .filters {
   display: flex;
   justify-content: space-between;
+  gap: 1.5rem;
+
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.categoriesWrapper {
+  overflow: hidden;
 }

@@ -14,7 +14,7 @@ const Header = () => {
       </div>
 
       <button className={cl.cart}>
-        <span className={cl.price}>520 ₽</span>
+        <span className={cl.price}>0 ₽</span>
         <span className={cl.divider} />
         <div className={cl.count}>
           <img src={shopIcon} alt="" />

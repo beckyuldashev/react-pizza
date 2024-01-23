@@ -2,8 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem;
-  border-bottom: 1px solid var(--clr-neutral-150)
+  padding: clamp(1rem, 5vw, 2.5rem);
+  border-bottom: 1px solid var(--clr-neutral-150);
+
+  @media screen and (max-width: 590px) {
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
 }
 
 .logo {
@@ -19,17 +24,21 @@
 }
 
 .subtitle {
-  color: var(--clr-neutral-600)
+  color: var(--clr-neutral-600);
+
+  @media screen and (max-width: 590px) {
+    display: none;
+  }
 }
 
 .cart {
   display: flex;
   align-items: center;
   column-gap: var(--fz-200);
-  background-color:var(--clr-primary-200);
+  background-color: var(--clr-primary-200);
   color: var(--clr-neutral-100);
   font-weight: var(--fw-bold);
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 1.875rem;
   border: none;
   cursor: pointer;
@@ -43,5 +52,5 @@
 
 .count {
   display: inline-flex;
-  column-gap: .25rem;
+  column-gap: 0.25rem;
 }

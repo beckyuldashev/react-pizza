@@ -5,7 +5,7 @@ import cl from './Sort.module.scss';
 const Sort = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [selectIndex, setSelectIndex] = useState(0);
-  const sortNames = ['по популярности', 'по цене', 'по алфавиту'];
+  const sortNames = ['популярности', 'цене', 'алфавиту'];
 
   const onSortSelect = (sortIndex) => {
     setSelectIndex(sortIndex);

@@ -6,7 +6,9 @@ import cl from './Filters.module.scss';
 const Filters = () => {
   return (
     <div className={cl.filters}>
-      <Categories />
+      <div className={cl.categoriesWrapper}>
+        <Categories />
+      </div>
       <Sort />
     </div>
   );

@@ -2,9 +2,14 @@
   display: flex;
   align-items: center;
   column-gap: 0.5rem;
+  flex-shrink: 0;
   position: relative;
   font-size: var(--fz-300);
   font-weight: var(--fw-bold);
+
+  @media screen and (max-width: 1200px) {
+    justify-content: flex-end;
+  }
 }
 
 .picked {

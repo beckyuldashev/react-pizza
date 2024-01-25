@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import shopIcon from '../../assets/icons/shop-icon.svg';
 
 import cl from './Header.module.scss';
@@ -13,14 +14,14 @@ const Header = () => {
         </div>
       </div>
 
-      <button className={cl.cart}>
+      <Link to="/cart" className={cl.cart}>
         <span className={cl.price}>0 ₽</span>
         <span className={cl.divider} />
         <div className={cl.count}>
           <img src={shopIcon} alt="" />
-          <span>3</span>
+          <span>0</span>
         </div>
-      </button>
+      </Link>
     </header>
   );
 };

@@ -2,13 +2,25 @@ import { useState } from 'react';
 
 import cl from './Sort.module.scss';
 
-const Sort = () => {
+const Sort = ({ sortCategory, setSortCategory }) => {
   const [isOpened, setIsOpened] = useState(false);
-  const [selectIndex, setSelectIndex] = useState(0);
-  const sortNames = ['популярности', 'цене', 'алфавиту'];
+  const sortNames = [
+    {
+      title: 'популярности',
+      sortProp: 'rating',
+    },
+    {
+      title: 'цене',
+      sortProp: 'price',
+    },
+    {
+      title: 'алфавиту',
+      sortProp: 'title',
+    },
+  ];
 
   const onSortSelect = (sortIndex) => {
-    setSelectIndex(sortIndex);
+    setSortCategory(sortNames[sortIndex]);
     setIsOpened(false);
   };
 
@@ -22,15 +34,15 @@ const Sort = () => {
       </svg>
       <span>Сортировка по:</span>
       <span className={cl.picked} onClick={() => setIsOpened((prev) => !prev)}>
-        {sortNames[selectIndex]}
+        {sortCategory.title}
       </span>
       <ul className={isOpened ? `${cl.list} ${cl.active}` : cl.list}>
         {sortNames.map((sort, index) => (
           <li
             key={index}
-            className={selectIndex === index ? cl.item + ' ' + cl.active : cl.item}
+            className={sortCategory.title === sort.title ? cl.item + ' ' + cl.active : cl.item}
             onClick={() => onSortSelect(index)}>
-            {sort}
+            {sort.title}
           </li>
         ))}
       </ul>

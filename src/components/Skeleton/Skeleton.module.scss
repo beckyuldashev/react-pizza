@@ -1,0 +1,52 @@
+.wrapper {
+  & > * + * {
+    margin-top: 1rem;
+  }
+}
+
+.elem {
+  width: 280px;
+  border-radius: 0.625rem;
+  animation: skeleton 1s linear infinite alternate;
+  background-color: #eee;
+}
+
+.circle {
+  height: 280px;
+  border-radius: 50%;
+}
+
+.title {
+  height: 44px;
+}
+
+.info {
+  height: 100px;
+}
+
+.footer {
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  width: 80px;
+  height: 30px;
+}
+
+.btn {
+  width: 160px;
+  height: 42px;
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 90%);
+  }
+}

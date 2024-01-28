@@ -1,4 +1,6 @@
 .wrapper {
+  margin-block: 3rem;
+  text-align: center;
   h1 {
     font-size: clamp(var(--fz-400), 5vw, var(--fz-800));
   }

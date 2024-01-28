@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+
+import Search from '../Search/Search';
+
 import shopIcon from '../../assets/icons/shop-icon.svg';
 
 import cl from './Header.module.scss';
@@ -13,6 +16,8 @@ const Header = () => {
           <span className={cl.subtitle}>самая вкусная пицца во вселенной</span>
         </div>
       </div>
+
+      <Search />
 
       <Link to="/cart" className={cl.cart}>
         <span className={cl.price}>0 ₽</span>

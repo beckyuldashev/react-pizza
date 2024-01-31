@@ -1,26 +1,32 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeSort } from '../../redux/slices/filters/filtersSlice';
 
 import cl from './Sort.module.scss';
 
-const Sort = ({ sortCategory, setSortCategory }) => {
+const sortNames = [
+  {
+    title: 'популярности',
+    sortProp: 'rating',
+  },
+  {
+    title: 'цене',
+    sortProp: 'price',
+  },
+  {
+    title: 'алфавиту',
+    sortProp: 'title',
+  },
+];
+
+const Sort = () => {
+  const sortCategory = useSelector((state) => state.filters.sortCategory);
+  const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
-  const sortNames = [
-    {
-      title: 'популярности',
-      sortProp: 'rating',
-    },
-    {
-      title: 'цене',
-      sortProp: 'price',
-    },
-    {
-      title: 'алфавиту',
-      sortProp: 'title',
-    },
-  ];
 
   const onSortSelect = (sortIndex) => {
-    setSortCategory(sortNames[sortIndex]);
+    dispatch(changeSort(sortNames[sortIndex]));
     setIsOpened(false);
   };
 

@@ -1,6 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeCategory } from '../../redux/slices/filters/filtersSlice';
+
 import cl from './Categories.module.scss';
 
-const Categories = ({ selectCategory, setSelectCategory }) => {
+const Categories = () => {
+  const selectCategory = useSelector((state) => state.filters.selectCategory);
+  const dispatch = useDispatch();
+
   const categoryNames = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
@@ -9,7 +16,7 @@ const Categories = ({ selectCategory, setSelectCategory }) => {
         <li className={cl.item} key={category}>
           <button
             className={selectCategory === index ? cl.btn + ' ' + cl.active : cl.btn}
-            onClick={() => setSelectCategory(index)}>
+            onClick={() => dispatch(changeCategory(index))}>
             {category}
           </button>
         </li>

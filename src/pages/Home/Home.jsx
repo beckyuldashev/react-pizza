@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 import Filters from '../../components/Filters/Filters';
@@ -14,11 +15,8 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pizzaData, setPizzaData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectCategory, setSelectCategory] = useState(0);
-  const [sortCategory, setSortCategory] = useState({
-    title: 'популярности',
-    sortProp: 'rating',
-  });
+
+  const { selectCategory, sortCategory } = useSelector((state) => state.filters);
 
   useEffect(() => {
     const REQUEST_URL = {
@@ -50,12 +48,7 @@ const Home = () => {
 
   return (
     <main className={cl.main}>
-      <Filters
-        selectCategory={selectCategory}
-        sortCategory={sortCategory}
-        setSelectCategory={setSelectCategory}
-        setSortCategory={setSortCategory}
-      />
+      <Filters />
       <Pizzas pizzaData={pizzaData} isLoading={isLoading} />
 
       <Pagination currentPage={currentPage} totalPages={3} setCurrentPage={setCurrentPage} />

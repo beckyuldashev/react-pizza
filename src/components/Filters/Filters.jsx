@@ -3,13 +3,13 @@ import Sort from '../Sort/Sort';
 
 import cl from './Filters.module.scss';
 
-const Filters = ({ selectCategory, sortCategory, setSelectCategory, setSortCategory }) => {
+const Filters = () => {
   return (
     <div className={cl.filters}>
       <div className={cl.categoriesWrapper}>
-        <Categories selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
+        <Categories />
       </div>
-      <Sort sortCategory={sortCategory} setSortCategory={setSortCategory} />
+      <Sort />
     </div>
   );
 };

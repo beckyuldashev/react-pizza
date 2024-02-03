@@ -12,11 +12,10 @@ import cl from './Home.module.scss';
 
 const Home = () => {
   const { searchValue } = useContext(SearchContext);
-  const [currentPage, setCurrentPage] = useState(1);
   const [pizzaData, setPizzaData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { selectCategory, sortCategory } = useSelector((state) => state.filters);
+  const { selectCategory, sortCategory, currentPage } = useSelector((state) => state.filters);
 
   useEffect(() => {
     const REQUEST_URL = {
@@ -34,13 +33,19 @@ const Home = () => {
     setIsLoading(true);
 
     const fetchData = async () => {
-      const res = await axios.get(REQUEST_URL.baseURL, {
-        params: { ...REQUEST_URL.params },
-      });
+      try {
+        const res = await axios.get(REQUEST_URL.baseURL, {
+          params: { ...REQUEST_URL.params },
+        });
 
-      setIsLoading(false);
-      setPizzaData(res.data);
-      window.scrollTo(0, 0);
+        setPizzaData(res.data);
+        window.scrollTo(0, 0);
+      } catch (error) {
+        console.log(error);
+        setPizzaData([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchData();
@@ -51,7 +56,7 @@ const Home = () => {
       <Filters />
       <Pizzas pizzaData={pizzaData} isLoading={isLoading} />
 
-      <Pagination currentPage={currentPage} totalPages={3} setCurrentPage={setCurrentPage} />
+      <Pagination totalPages={3} />
     </main>
   );
 };

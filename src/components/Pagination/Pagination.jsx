@@ -1,6 +1,12 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { changeCurrentPage } from '../../redux/slices/filters/filtersSlice';
+
 import cl from './Pagination.module.scss';
 
-const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
+const Pagination = ({ totalPages }) => {
+  const { currentPage } = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+
   return (
     <div className={cl.wrapper}>
       <ul className={cl.list}>
@@ -8,7 +14,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
           <button
             disabled={currentPage === 1}
             className={cl.btn}
-            onClick={() => setCurrentPage((prev) => prev - 1)}>
+            onClick={() => dispatch(changeCurrentPage((prev) => prev - 1))}>
             {'<'}
           </button>
         </li>
@@ -17,7 +23,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
           <li key={index}>
             <button
               className={currentPage === index + 1 ? cl.btn + ' ' + cl.active : cl.btn}
-              onClick={() => setCurrentPage(index + 1)}>
+              onClick={() => dispatch(changeCurrentPage(index + 1))}>
               {index + 1}
             </button>
           </li>
@@ -27,7 +33,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
           <button
             disabled={currentPage === totalPages}
             className={cl.btn}
-            onClick={() => setCurrentPage((prev) => prev + 1)}>
+            onClick={() => dispatch(changeCurrentPage((prev) => prev + 1))}>
             {'>'}
           </button>
         </li>

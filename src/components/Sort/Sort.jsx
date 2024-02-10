@@ -5,7 +5,7 @@ import { changeSort } from '../../redux/slices/filters/filtersSlice';
 
 import cl from './Sort.module.scss';
 
-const sortNames = [
+export const sortNames = [
   {
     title: 'популярности',
     sortProp: 'rating',

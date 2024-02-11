@@ -1,12 +1,17 @@
+import { Link } from 'react-router-dom';
+
 import cl from './NotFoundError.module.scss';
 
 const NotFoundError = ({ title }) => {
   return (
     <div className={cl.wrapper}>
-      <h1>
+      <p>
         {title}
         <span>😕</span>
-      </h1>
+      </p>
+      <Link to="/" className="back-link">
+        Вернуться назад
+      </Link>
     </div>
   );
 };

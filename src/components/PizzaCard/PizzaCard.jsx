@@ -1,10 +1,31 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { addItem } from '../../redux/slices/cart/cartSlice';
+
 import cl from './PizzaCard.module.scss';
 
-const PizzaCard = ({ title, price, imageUrl, sizes, types }) => {
+const typeNames = ['тонкое', 'традиционное'];
+
+const PizzaCard = ({ id, title, price, imageUrl, sizes, types }) => {
   const [typeSelectedIndex, setTypeSelectedIndex] = useState(types[0]);
   const [sizeSelectIndex, setSizeSelectIndex] = useState(0);
-  const typeNames = ['тонкое', 'традиционное'];
+  const dispatch = useDispatch();
+  const addedCount =
+    useSelector((state) => state.cart.items.find((item) => item.id === id))?.count ?? 0;
+
+  const onAddToCart = () => {
+    const item = {
+      id,
+      title,
+      price,
+      imageUrl,
+      type: typeNames[typeSelectedIndex],
+      size: sizes[sizeSelectIndex],
+    };
+
+    dispatch(addItem(item));
+  };
 
   return (
     <div className={cl.card}>
@@ -35,9 +56,9 @@ const PizzaCard = ({ title, price, imageUrl, sizes, types }) => {
         </div>
         <div className={cl.footer}>
           <div className={cl.price}>от {price} ₽</div>
-          <button className={cl.btn}>
+          <button className={cl.btn} onClick={onAddToCart}>
             + добавить
-            <span>0</span>
+            {addedCount > 0 && <span>{addedCount}</span>}
           </button>
         </div>
       </div>

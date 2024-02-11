@@ -1,7 +1,16 @@
 .wrapper {
-  margin-block: 3rem;
+  padding-block: clamp(2rem, 5vw, 10rem);
+  padding-inline: 1rem;
   text-align: center;
-  h1 {
-    font-size: clamp(var(--fz-400), 5vw, var(--fz-800));
+
+  & > * + * {
+    margin-top: 2rem;
+  }
+
+  p {
+    max-width: 50ch;
+    margin-inline: auto;
+    font-size: clamp(var(--fz-400), 5vw, var(--fz-700));
+    font-weight: 700;
   }
 }

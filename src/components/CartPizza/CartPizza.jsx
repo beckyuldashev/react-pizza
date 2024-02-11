@@ -1,20 +1,36 @@
-import pizzaImg from '../../assets/img/pizza.png';
+import { useDispatch } from 'react-redux';
+import { removeItem, addItem } from '../../redux/slices/cart/cartSlice';
 
 import cl from './CartPizza.module.scss';
 
-const CartPizza = () => {
+const CartPizza = ({ id, title, price, imageUrl, type, size, count }) => {
+  const dispatch = useDispatch();
+
+  const onRemoveItem = (isDeleted) => {
+    if (window.confirm('Ты действительно хочешь удалить этот товар?')) {
+      dispatch(removeItem({ id, price, isDeleted }));
+    }
+  };
+
+  const onAdd = () => {
+    dispatch(addItem({ id, price }));
+  };
+
   return (
     <div className={cl.pizza}>
       <div className={cl.left}>
-        <img className={cl.img} src={pizzaImg} alt="Сырный цыпленок" />
+        <img className={cl.img} src={imageUrl} alt={title} />
         <div className={cl.content}>
-          <h3>Сырный цыпленок</h3>
-          <p>тонкое тесто, 26 см.</p>
+          <h3>{title}</h3>
+          <p>
+            {type}, {size} см.
+          </p>
         </div>
       </div>
       <div className={cl.right}>
         <div className={cl.counter}>
           <svg
+            onClick={() => onRemoveItem(false)}
             className="hovered"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -27,8 +43,9 @@ const CartPizza = () => {
               fill="#FE5F1E"
             />
           </svg>
-          <span>2</span>
+          <span>{count}</span>
           <svg
+            onClick={onAdd}
             className="hovered"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -42,8 +59,11 @@ const CartPizza = () => {
             />
           </svg>
         </div>
-        <span className={cl.price}>770 ₽</span>
+
+        <span className={cl.price}>{price * count} ₽</span>
+
         <svg
+          onClick={() => onRemoveItem(true)}
           className="hovered"
           xmlns="http://www.w3.org/2000/svg"
           width="32"

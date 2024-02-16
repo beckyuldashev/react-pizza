@@ -1,17 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { changeSearchValue } from '../../redux/slices/filters/filtersSlice';
 import { useDebounce } from '../../hooks/useDebounce';
-import { SearchContext } from '../../searchContext';
 
 import cl from './Search.module.scss';
 
 const Search = () => {
   const [searchTerm, setSearhTerm] = useState('');
-  const { setSearchValue } = useContext(SearchContext);
+  const dispatch = useDispatch();
   const debouncedValue = useDebounce(searchTerm, 500);
 
   useEffect(() => {
-    setSearchValue(debouncedValue);
+    dispatch(changeSearchValue(debouncedValue));
   }, [debouncedValue]);
 
   return (

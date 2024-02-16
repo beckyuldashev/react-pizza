@@ -1,31 +1,30 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import qs from 'qs';
 
 import Filters from '../../components/Filters/Filters';
 import Pizzas from '../../components/Pizzas/Pizzas';
 import Pagination from '../../components/Pagination/Pagination';
 
-import { SearchContext } from '../../searchContext';
 import { changeFilters } from '../../redux/slices/filters/filtersSlice';
+import { fetchPizzas } from '../../redux/slices/pizzas/pizzasSlice';
 import { sortNames } from '../../components/Sort/Sort';
 
 import cl from './Home.module.scss';
 
 const Home = () => {
-  const { searchValue } = useContext(SearchContext);
-  const [pizzaData, setPizzaData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { items, status } = useSelector((state) => state.pizzas);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
 
-  const { selectCategory, sortCategory, currentPage } = useSelector((state) => state.filters);
+  const { selectCategory, sortCategory, currentPage, searchValue } = useSelector(
+    (state) => state.filters,
+  );
 
-  const fetchingPizzas = () => {
+  const getPizzas = () => {
     const REQUEST_URL = {
       baseURL: 'https://65624643dcd355c08324b89d.mockapi.io/pizzas',
       params: {
@@ -38,24 +37,8 @@ const Home = () => {
       },
     };
 
-    const responseData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await axios.get(REQUEST_URL.baseURL, {
-          params: { ...REQUEST_URL.params },
-        });
-
-        setPizzaData(res.data);
-        window.scrollTo(0, 0);
-      } catch (error) {
-        console.log(error);
-        setPizzaData([]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    responseData();
+    dispatch(fetchPizzas(REQUEST_URL));
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -64,13 +47,14 @@ const Home = () => {
         selectCategory,
         sortProp: sortCategory.sortProp,
         currentPage,
+        title: searchValue,
       });
 
       navigate(`/?${params}`);
     }
 
     isMounted.current = true;
-  }, [selectCategory, sortCategory.sortProp, currentPage, navigate]);
+  }, [selectCategory, sortCategory.sortProp, currentPage, searchValue, navigate]);
 
   useEffect(() => {
     if (window.location.search) {
@@ -81,6 +65,7 @@ const Home = () => {
           selectCategory: params.selectCategory,
           currentPage: params.currentPage,
           sortCategory: sortCategory,
+          title: searchValue,
         }),
       );
       isSearch.current = true;
@@ -89,7 +74,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!isSearch.current) {
-      fetchingPizzas();
+      getPizzas();
     }
 
     isSearch.current = false;
@@ -98,7 +83,7 @@ const Home = () => {
   return (
     <main className={cl.main}>
       <Filters />
-      <Pizzas pizzaData={pizzaData} isLoading={isLoading} />
+      <Pizzas pizzaData={items} status={status} />
 
       <Pagination totalPages={3} />
     </main>

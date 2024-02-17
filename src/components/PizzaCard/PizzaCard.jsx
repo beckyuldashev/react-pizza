@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addItem } from '../../redux/slices/cart/cartSlice';
+import { addItem, selectCartItem } from '../../redux/slices/cart/cartSlice';
 
 import cl from './PizzaCard.module.scss';
 
@@ -11,8 +11,7 @@ const PizzaCard = ({ id, title, price, imageUrl, sizes, types }) => {
   const [typeSelectedIndex, setTypeSelectedIndex] = useState(types[0]);
   const [sizeSelectIndex, setSizeSelectIndex] = useState(0);
   const dispatch = useDispatch();
-  const addedCount =
-    useSelector((state) => state.cart.items.find((item) => item.id === id))?.count ?? 0;
+  const addedCount = useSelector(selectCartItem(id))?.count ?? 0;
 
   const onAddToCart = () => {
     const item = {

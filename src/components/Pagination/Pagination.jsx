@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCurrentPage } from '../../redux/slices/filters/filtersSlice';
+import { changeCurrentPage, selectorfilters } from '../../redux/slices/filters/filtersSlice';
 
 import cl from './Pagination.module.scss';
 
 const Pagination = ({ totalPages }) => {
-  const { currentPage } = useSelector((state) => state.filters);
+  const { currentPage } = useSelector(selectorfilters);
   const dispatch = useDispatch();
 
   return (

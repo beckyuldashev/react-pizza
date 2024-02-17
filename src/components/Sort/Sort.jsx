@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeSort } from '../../redux/slices/filters/filtersSlice';
+import { changeSort, selectorSortCategory } from '../../redux/slices/filters/filtersSlice';
 
 import cl from './Sort.module.scss';
 
@@ -21,7 +21,7 @@ export const sortNames = [
 ];
 
 const Sort = () => {
-  const sortCategory = useSelector((state) => state.filters.sortCategory);
+  const sortCategory = useSelector(selectorSortCategory);
   const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
   const sortRef = useRef(null);

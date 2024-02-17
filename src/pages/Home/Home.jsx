@@ -8,13 +8,13 @@ import Pizzas from '../../components/Pizzas/Pizzas';
 import Pagination from '../../components/Pagination/Pagination';
 
 import { changeFilters } from '../../redux/slices/filters/filtersSlice';
-import { fetchPizzas } from '../../redux/slices/pizzas/pizzasSlice';
+import { fetchPizzas, selectorPizzas } from '../../redux/slices/pizzas/pizzasSlice';
 import { sortNames } from '../../components/Sort/Sort';
 
 import cl from './Home.module.scss';
 
 const Home = () => {
-  const { items, status } = useSelector((state) => state.pizzas);
+  const { items, status } = useSelector(selectorPizzas);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isSearch = useRef(false);

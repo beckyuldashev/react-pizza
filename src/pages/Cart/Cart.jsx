@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import CartPizza from '../../components/CartPizza/CartPizza';
 import NotFoundError from '../../components/NotFoundError/NotFoundError';
 
-import { clearItems } from '../../redux/slices/cart/cartSlice';
+import { clearItems, selectorCart } from '../../redux/slices/cart/cartSlice';
 
 import cl from './Cart.module.scss';
 
 const Cart = () => {
-  const { items, totalCount, totalPrice } = useSelector((state) => state.cart);
+  const { items, totalCount, totalPrice } = useSelector(selectorCart);
   const dispatch = useDispatch();
 
   const onClearItems = () => {

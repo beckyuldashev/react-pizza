@@ -2,13 +2,14 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Search from '../Search/Search';
+import { selectorCart } from '../../redux/slices/cart/cartSlice';
 
 import shopIcon from '../../assets/icons/shop-icon.svg';
 
 import cl from './Header.module.scss';
 
 const Header = () => {
-  const { totalPrice, totalCount } = useSelector((state) => state.cart);
+  const { totalPrice, totalCount } = useSelector(selectorCart);
 
   return (
     <header className={cl.header}>

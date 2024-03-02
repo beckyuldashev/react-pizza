@@ -1,0 +1,14 @@
+.card {
+  padding: clamp(1rem, 5vw, 2.5rem);
+  max-width: 350px;
+  margin-inline: auto;
+  text-align: center;
+
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  strong {
+    display: inline-block;
+  }
+}

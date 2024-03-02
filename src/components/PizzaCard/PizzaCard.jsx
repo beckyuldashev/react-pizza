@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItem, selectCartItem } from '../../redux/slices/cart/cartSlice';
 
 import cl from './PizzaCard.module.scss';
+import { Link } from 'react-router-dom';
 
 const typeNames = ['тонкое', 'традиционное'];
 
@@ -28,7 +29,9 @@ const PizzaCard = ({ id, title, price, imageUrl, sizes, types }) => {
 
   return (
     <div className={cl.card}>
-      <img className={cl.img} src={imageUrl} alt={title} />
+      <Link to={`/pizza/${id}`}>
+        <img className={cl.img} src={imageUrl} alt={title} />
+      </Link>
       <div className={cl.info}>
         <h3 className={cl.title}>{title}</h3>
         <div className={cl.variants}>
